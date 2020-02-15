@@ -1,4 +1,4 @@
-# <kacharya> , <116694803>
+# Simple Caesar's Cipher Demo Code
 import sys
 
 #Encoding Function
@@ -38,16 +38,11 @@ def test_module():
     k_char = sys.argv[1]
     K = int(k_char)
     input_str = sys.argv[2]
-    
-    #K = 3
-    #input_str = "this is a test"
-    
-    #print(input_str)
+
     encstr = caesar_str_enc(input_str, K)
     print(encstr)
     decstr = caesar_str_dec(encstr, K)
     print(decstr)
-    
     
 if __name__=="__main__":
     test_module()
