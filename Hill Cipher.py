@@ -78,5 +78,4 @@ def hill_dec(M, ciphertext):
 
     plain = [chr(c+97) for c in [val for sub in p_int_mat for val in sub]]
     p = ''.join(plain)
-    #print(p)
     return p
