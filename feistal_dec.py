@@ -22,12 +22,14 @@ def xor(byteseq1, byteseq2):
 
 ########################################## FUNCTION #########################################
 def F(byteseq, k):    # create a hmac sha1 
+    # same as encryption part
     h = hmac.new(k, byteseq, hashlib.sha1)
     return h.digest()[:8]
 
 
 ################################# MAIN BLOCK PROCESSING #####################################
 def feistel_block(LE_inp, RE_inp, k):
+    # same as encryption part
     LE_out = RE_inp
     RE_out = xor(LE_inp, (F(RE_inp, k)))
     return LE_out, RE_out
@@ -49,7 +51,7 @@ def feistel_dec(inputblock, num_rounds, seed):
     RE = inputblock[4:8]
     LE_out = LE
     RE_out = RE
-    
+    # same as encryption part except the keys order, which is reversed for decryption
     for i in range(num_rounds):
         LE_out, RE_out = feistel_block(LE_out, RE_out, keylist[num_rounds - 1 - i])
         
