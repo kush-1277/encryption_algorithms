@@ -60,6 +60,10 @@ def feistel_enc(inputblock, num_rounds, seed):
 
 #################################### TEST MAIN ENCRYPTION #####################################
 def feistel_enc_test(input_fname, seed, num_rounds, output_fname):
+    # input_fname is the filename that we want to encrypt.
+    # seed is the starting point from hwere our random keys will be generated
+    # num_rounds = number of rounds = 16
+    # output_fname is the name of the outputfile
     finp = open(input_fname, 'rb')
     inpbyteseq = finp.read()
     finp.close()
