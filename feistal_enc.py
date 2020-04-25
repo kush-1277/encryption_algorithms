@@ -18,12 +18,15 @@ def xor(byteseq1, byteseq2):
 
 ########################################## FUNCTION #########################################
 def F(byteseq, k):    # create a hmac sha1 
+    # for feistal, any function F works as it will be reversed during decryption process. 
+    # To increase complexity, I have used SHA1 hashing algorithm as Function F
     h = hmac.new(k, byteseq, hashlib.sha1)
     return h.digest()[:8]
 
 
 ################################# MAIN BLOCK PROCESSING #####################################
 def feistel_block(LE_inp, RE_inp, k):
+    # Perform the operations inside 1 Fiestal block each iteration
     LE_out = RE_inp
     RE_out = xor(LE_inp, (F(RE_inp, k)))
     return LE_out, RE_out
@@ -33,6 +36,7 @@ def feistel_block(LE_inp, RE_inp, k):
 keylist = []
 def gen_keylist(keylenbytes, numkeys, seed):
     random.seed(seed) #sets starting point to start random no.
+    # keys also generated randomly to add to the complexity of the algorithm
     for i in range(numkeys):
         l = [random.randint(0,255) for i in range(keylenbytes)]
         keylist.append(bytes(l))
